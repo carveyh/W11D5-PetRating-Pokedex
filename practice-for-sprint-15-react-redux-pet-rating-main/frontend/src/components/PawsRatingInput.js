@@ -9,8 +9,8 @@ const PawsRatingInput = ({ rating, disabled, onChange }) => {
   const onMouseEnter = e => {
     e.preventDefault();
     
-    setActiveRating(e.target.key)
-    console.log(activeRating)
+    setActiveRating(e.target.id)
+    console.log(e.target.id)
     
     // debugger;
   }
@@ -32,7 +32,18 @@ const PawsRatingInput = ({ rating, disabled, onChange }) => {
           </div>
         }} */}
 
-        <div key = "1" className={activeRating < 1 ? "empty" : "filled"} onMouseEnter = {onMouseEnter}>
+        {[1, 2, 3, 4, 5].map(num => {
+          return (
+            
+            <>
+              <div className={activeRating < num ? "empty" : "filled"} onMouseEnter = {onMouseEnter}>
+                <i id = {num} className="fa fa-paw"></i>
+              </div>
+            </>
+          )
+        })}
+
+        {/* <div className={activeRating < 1 ? "empty" : "filled"} onMouseEnter = {onMouseEnter}>
           <i className="fa fa-paw"></i>
         </div>
         <div key = "2" className={activeRating < 2 ? "empty" : "filled"} onMouseEnter = {onMouseEnter}>
@@ -46,7 +57,7 @@ const PawsRatingInput = ({ rating, disabled, onChange }) => {
         </div>
         <div key = "5" className={activeRating < 5 ? "empty" : "filled"} onMouseEnter = {onMouseEnter}>
           <i className="fa fa-paw"></i>
-        </div>
+        </div> */}
       </div>
     </>
   );
